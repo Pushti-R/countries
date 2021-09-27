@@ -7,10 +7,6 @@
 
 :root {
   /* Primary Color Shades */
-  --clr-primary-1: hsl(206, 50%, 6%);
-  --clr-primary-2: hsl(206, 50%, 15%);
-  /* Primary/Main Color */
-  --clr-primary-3: hsl(177, 95%, 42%);
   --clr-red: hsl(0, 100%, 55%);
   --clr-font: black;
   --spacing: 0.7rem;
@@ -29,14 +25,14 @@ a {
   color: var(--clr-font);
 }
 body {
-  background-color: palegreen;
+  background-color: #f5fffa;
   color: var(--clr-font);
   font-family: 'Playfair Display', serif;
 }
 nav {
   font-family: 'Koh Santepheap', cursive;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 1rem;
 }
@@ -47,10 +43,10 @@ body::-webkit-scrollbar {
   width: 0.6rem;
 }
 body::-webkit-scrollbar-track {
-  background: var(--clr-primary-2);
+  background: hsl(206,60%, 25%);
 }
 body::-webkit-scrollbar-thumb {
-  background: blue;
+  background: #87cefa;
 }
 
 main {
@@ -89,12 +85,12 @@ main button:hover {
 .loading {
   font-size: 3rem;
   color: blue;
-  animation: loading 5s linear infinite alternate;
+  animation: loading  5s linear infinite alternate;
 }
 
 .error {
   font-size: 3rem;
-  color: var(--clr-red);
+  color: hsl(0, 100%, 55%);
 }
 #icon {
   font-size: 2.5rem;
@@ -102,12 +98,8 @@ main button:hover {
   color: black;
   text-align: center;
   justify-content: center;
-  margin-left: 580px;
+  /*margin-left: 580px;*/
   margin-top: 2rem;
-}
-#logo {
-  color: var(--clr-primary-3);
-  animation: round 4s linear infinite;
 }
 .container {
   display: grid;
@@ -151,7 +143,7 @@ main button:hover {
 
 .country-name {
   font-size: 2rem;
-  color:purple;
+  color: purple;
   font-family: 900;
 }
 
@@ -172,14 +164,6 @@ main button:hover {
     transform: translateY(3rem);
   }
 }
-@keyframes round {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(340deg);
-  }
-}
 
 .footer {
   width: 100%;
@@ -193,7 +177,10 @@ main button:hover {
 
 @media(max-width:720px) {
   #icon {
-    margin-left: 40px;
+    /*margin-left: 40px; */
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5rem;
   }
   .container {
@@ -205,10 +192,10 @@ main button:hover {
     text-align: center;
   }
   main button {
-    margin-right: 100px;
     justify-content: center;
     align-items: center;
     text-align: center;
+    align-self: center;
   }
   
 
