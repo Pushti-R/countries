@@ -1,25 +1,73 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { FaGlobeAsia } from 'react-icons/fa';
+import { VscError } from 'react-icons/vsc';
+import Country from './Components/Country';
+import NavBar from './Components/NavBar';
+import Footer from './Components/Footer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+  const url = 'https://restcountries.com/v2/continent/asia';
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchData = () => {
+    setIsLoading(true);
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => {
+        setError(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <main>
+        <NavBar />
+        <div className="loading-section">
+          <FaGlobeAsia className="loading" />
+        </div>
+      </main>
+    );
+  } else if (error) {
+    return (
+      <main>
+        <NavBar />
+        <div className="error-section">
+          <VscError className="error" />
+        </div>
+        <Footer />
+      </main>
+    );
+  } else {
+    return (
+      <main>
+        <NavBar />
+        <button
+          onClick={() => {
+            fetchData();
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          Refresh Data
+        </button>
+        <section className="container">
+          {data.map((country, index) => {
+            return <Country key={index} {...country} />;
+          })}
+        </section>
+        <Footer />
+      </main>
+    );
+  }
 }
 
 export default App;

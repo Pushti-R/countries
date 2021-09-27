@@ -1,13 +1,217 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Google Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Koh+Santepheap:wght@300;400;700&display=swap');
+
+/* Variables */
+
+:root {
+  /* Primary Color Shades */
+  --clr-primary-1: hsl(206, 50%, 6%);
+  --clr-primary-2: hsl(206, 50%, 15%);
+  /* Primary/Main Color */
+  --clr-primary-3: hsl(177, 95%, 42%);
+  --clr-red: hsl(0, 100%, 55%);
+  --clr-font: black;
+  --spacing: 0.7rem;
+  --radius: 0.5rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Global Styles */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+  color: var(--clr-font);
+}
+body {
+  background-color: palegreen;
+  color: var(--clr-font);
+  font-family: 'Playfair Display', serif;
+}
+nav {
+  font-family: 'Koh Santepheap', cursive;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+/* Scrollbar Styles */
+
+body::-webkit-scrollbar {
+  width: 0.6rem;
+}
+body::-webkit-scrollbar-track {
+  background: var(--clr-primary-2);
+}
+body::-webkit-scrollbar-thumb {
+  background: blue;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main button {
+  background-color: blue;
+  color: white;
+  font-size: 1rem;
+  align-self: flex-end;
+  margin: 1rem 2rem;
+  margin-bottom: 2rem;
+  padding: var(--spacing);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+main button:hover {
+  background-color: aqua;
+  color: black;
+  border: 1px solid black;
+}
+
+/* Global Classes and IDs */
+
+.loading-section,
+.error-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading {
+  font-size: 3rem;
+  color: blue;
+  animation: loading 5s linear infinite alternate;
+}
+
+.error {
+  font-size: 3rem;
+  color: var(--clr-red);
+}
+#icon {
+  font-size: 2.5rem;
+  align-items: center;
+  color: black;
+  text-align: center;
+  justify-content: center;
+  margin-left: 580px;
+  margin-top: 2rem;
+}
+#logo {
+  color: var(--clr-primary-3);
+  animation: round 4s linear infinite;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 32rem));
+  gap: 10rem;
+  justify-content: center;
+}
+.card {
+  overflow: hidden;
+  border: 1px solid black;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 0.5rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-9px);
+  cursor: pointer;
+  box-shadow: 5px 5px 5px 5px black;
+}
+.flag-img {
+  height: 18rem;
+  width: 100%;
+  object-fit: cover;
+  border: 1.3px solid black;
+}
+.country-name,
+.capital-name,
+.continent,
+.languages,
+.population,
+.borders {
+  padding: var(--spacing);
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.country-name {
+  font-size: 2rem;
+  color:purple;
+  font-family: 900;
+}
+
+.borders {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Keyframes */
+
+@keyframes loading {
+  0% , 100% {
+    transform: translateY(0rem);
+  }
+  50% {
+    transform: translateY(3rem);
+  }
+}
+@keyframes round {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(340deg);
+  }
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  margin-top: 3rem;
+  background-color: gray;
+  color: white;
+  padding-top: 15px;
+}
+
+@media(max-width:720px) {
+  #icon {
+    margin-left: 40px;
+    font-size: 1.5rem;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 22rem));
+    justify-content: center;
+  }
+  .nav {
+    text-align: center;
+  }
+  main button {
+    margin-right: 100px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+
+}
+
+
